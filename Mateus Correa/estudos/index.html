@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OrganizaEstudos</title>
+</head>
+<body>
+
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+
+    function Cabecalho() {
+      return (
+        <header>
+          <h1>Nexus</h1>
+          <p>
+            Loja de Hardware para empresas e etc.
+          </p>
+        </header>
+      );
+    }
+
+    
+function Cartao({ titulo, descricao, preco }) {
+  return (
+    <div>
+      <h3>{titulo}</h3>
+      <p>{descricao}</p>
+      <strong>{preco}</strong>
+    </div>
+  );
+}
+
+  
+function Lista() {
+  const produtos = [
+    { id: 1, nome: "Processador" },
+    { id: 2, nome: "Placa de vídeo" },
+    { id: 3, nome: "Memória RAM" },
+    { id: 4, nome: "Placa-mãe" }
+  ];
+
+  return (
+    <div>
+      <h2>Produtos da nossa loja</h2>
+      <ul>
+        {produtos.map((produto) => (
+          <li key={produto.id}>{produto.nome}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+    function App() {
+      return (
+        <div>
+          <Cabecalho />
+          <Cartao 
+           titulo="Processadores"
+  descricao="Desempenho para seu computador."
+  preco="Consulte os preços"/>
+          <Cartao 
+           titulo="Placas de vídeo"
+  descricao="Mais potência para jogos e gráficos."
+  preco="Consulte os preços"/>
+          <Cartao 
+           titulo="Memórias RAM"
+  descricao="Mais velocidade para suas tarefas."
+  preco="Consulte os preços"/>
+          <Lista />
+        </div>
+      );
+    }
+
+    const raiz = ReactDOM.createRoot(
+      document.getElementById("root")
+    );
+
+    raiz.render(<App />);
+
+  </script>
+
+</body>
+</html>
